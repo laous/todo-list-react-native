@@ -14,21 +14,28 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
 
-  // add item
+  // add todo
   const handlePress = () => {
     setItems([...items, input]);
     setInput("");
   };
 
+  const deleteTodo = (i) => {
+    const copy = items.filter((item, index) => index !== i);
+    setItems([...copy]);
+  };
   return (
     <View style={styles.container}>
       {/* Today's Tasks */}
       <View style={styles.wrapper}>
         <Text style={styles.sectionTitle}>Today's Task</Text>
         <View style={styles.items}>
-          {items.map((item, index) => {
-            return <Item text={item} key={index} />;
-          })}
+          {items.length <= 0 && <Text>No Todos Found!</Text>}
+          {items.map((item, index) => (
+            <TouchableOpacity onPress={() => deleteTodo(index)}>
+              <Item text={item} key={index} />
+            </TouchableOpacity>
+          ))}
         </View>
       </View>
 

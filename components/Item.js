@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-const Item = () => {
+const Item = ({ text }) => {
   return (
     <View style={styles.item}>
       <View style={styles.left}>
         <TouchableOpacity style={styles.square}></TouchableOpacity>
-        <Text style={styles.text}>This is an Item</Text>
+        <Text style={styles.text}>{text}</Text>
       </View>
       <View style={styles.circular}></View>
     </View>

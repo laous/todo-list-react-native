@@ -16,6 +16,9 @@ export default function App() {
 
   // add todo
   const handlePress = () => {
+    if (!input || /^\s*$/.test(input)) {
+      return;
+    }
     setItems([...items, input]);
     setInput("");
   };
